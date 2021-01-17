@@ -36,4 +36,3 @@ public class Invoice {
         return BigDecimal.ZERO;
     }
 }
-//return this.price.multiply(this.taxPercent).add(this.price );
