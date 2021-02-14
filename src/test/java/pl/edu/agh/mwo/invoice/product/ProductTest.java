@@ -18,7 +18,9 @@ public class ProductTest {
     @Test
     public void testProductPriceAndTaxWithDefaultTax() {
         Product product = new OtherProduct("Ogorki", new BigDecimal("100.0"));
-        Assert.assertThat(new BigDecimal("100"), Matchers.comparesEqualTo(product.getPrice()));
+        Assert.assertThat(new BigDecimal("100"), Matchers.comparesEqualTo(product.getPrice()));	//upewniamy sie, ze 100 rowne jest Matchers, assertThat pozwala nam rozszerzac JUnit o pisanie wlasnych asercji
+        																						//upewniamy się ze pierwszy argument (100) spełnia wymagania nalozone przez drugi argument (Matcher)
+        																						//addertThat nie przejdzie poniewaz porownujemy 100.0 do 100
         Assert.assertThat(new BigDecimal("0.23"), Matchers.comparesEqualTo(product.getTaxPercent()));
     }
 
