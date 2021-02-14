@@ -16,7 +16,7 @@ public class Invoice {
 	}
 
 	public void addProduct(Product product, Integer quantity) {
-		if (quantity == 0 || quantity < 1) {
+		if (quantity == 0 || quantity < 0) {
 			throw new IllegalArgumentException("You cannot add zero or negate quantity of products.");
 		}
 						
