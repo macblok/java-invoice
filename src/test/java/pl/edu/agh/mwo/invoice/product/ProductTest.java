@@ -1,12 +1,9 @@
 package pl.edu.agh.mwo.invoice.product;
 
 import java.math.BigDecimal;
-
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-
-import pl.edu.agh.mwo.invoice.product.Product;
 
 public class ProductTest {
     @Test
@@ -54,4 +51,33 @@ public class ProductTest {
     public void testProductWithNegativePrice() {
         new TaxFreeProduct("Mandarynki", new BigDecimal("-1.00"));
     }
+    
+    @Test
+    public void testBottleOfWineHasExcise() {
+    	BottleOfWine product = new BottleOfWine("Wino", new BigDecimal("8"));
+        BigDecimal excise = product.getExcise();
+    	Assert.assertTrue(excise.compareTo(new BigDecimal("0")) == 1);
+    }
+    
+    @Test
+    public void testBottleOfWineHasTotalPriceWithExcise() {
+        BottleOfWine product = new BottleOfWine("Wino", new BigDecimal("8"));
+        BigDecimal priceWithTaxWithoutExcise = product.getPrice().multiply(product.getTaxPercent()).add(product.getPrice());
+        Assert.assertThat(product.getPriceWithTax().subtract(priceWithTaxWithoutExcise), Matchers.comparesEqualTo(product.getExcise()));
+    }
+ 
+    @Test
+    public void testFuelCanisterHasExcise() {
+    	FuelCanister product = new FuelCanister("Fuel canister", new BigDecimal("8"));
+        BigDecimal excise = product.getExcise();
+    	Assert.assertTrue(excise.compareTo(new BigDecimal("0")) == 1);
+    }
+    
+    @Test
+    public void testFuelCanisterHasTotalPriceWithExcise() {
+        FuelCanister product = new FuelCanister("Fuel canister", new BigDecimal("8"));
+        BigDecimal priceWithTaxWithoutExcise = product.getPrice().multiply(product.getTaxPercent()).add(product.getPrice());
+        Assert.assertThat(product.getPriceWithTax().subtract(priceWithTaxWithoutExcise), Matchers.comparesEqualTo(product.getExcise()));
+    }
+    
 }
