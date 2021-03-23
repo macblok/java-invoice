@@ -222,13 +222,13 @@ public class InvoiceTest {
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         invoice.addProduct(new OtherProduct("skarpeta", new BigDecimal("10")), 3);
-        invoice.addProduct(new OtherProduct("buty", new BigDecimal("100")), 1);
+        invoice.addProduct(new BottleOfWine("wino", new BigDecimal("100")), 1);
         invoice.printInvoice();
         String invoiceString = outputStreamCaptor.toString().trim();
 
         String expectedString = "Issue date: " + invoice.getIssueDate() + "\r\n" + "Invoice number: "
                 + invoice.getNumber() + "\r\n" + "Product: skarpeta; quantity: 3; unit price: 12.30\r\n"
-                + "Product: buty; quantity: 1; unit price: 123.00\r\n" + "Number of items: 2";
+                + "Product: wino; quantity: 1; unit price: 128.56\r\n" + "Number of items: 2";
         System.setOut(standardOut);
         Assert.assertEquals(expectedString.trim(), invoiceString);
 
