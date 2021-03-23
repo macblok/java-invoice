@@ -55,9 +55,9 @@ public class Invoice {
         System.out.println("Issue date: " + issueDate);
         System.out.println("Invoice number: " + this.getNumber());
         for (Product product : products.keySet()) {
-            System.out.println("Product: " + product.getName()
+            System.out.print("Product: " + product.getName()
                     + "; quantity: " + products.get(product)
-                    + "; unit price: " + carrierDayPriceReductor(product));
+                    + "; unit price: " + carrierDayPriceReductor(product) + "\r\n");
 
         }
 

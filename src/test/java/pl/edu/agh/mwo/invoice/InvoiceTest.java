@@ -229,9 +229,9 @@ public class InvoiceTest {
         String expectedString = "Issue date: " + invoice.getIssueDate() + "\r\n" + "Invoice number: "
                 + invoice.getNumber() + "\r\n" + "Product: skarpeta; quantity: 3; unit price: 12.30\r\n"
                 + "Product: buty; quantity: 1; unit price: 123.00\r\n" + "Number of items: 2";
-
-        Assert.assertEquals(expectedString.trim(), invoiceString);
         System.setOut(standardOut);
+        Assert.assertEquals(expectedString.trim(), invoiceString);
+
     }
 
 }
